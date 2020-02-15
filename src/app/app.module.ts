@@ -11,13 +11,18 @@ import { ProductoListComponent } from './components/list/producto-list/producto-
 
 import { ProductoService } from './services/producto.service';
 import { TallaService } from './services/talla.service';
+import { CategoriaService } from './services/categoria.service';
+import { FilterComponent } from './components/filter/filter.component';
+import { CatalogoComponent } from './components/catalogo/catalogo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavegacionComponent,
     ProductoFormComponent,
-    ProductoListComponent
+    ProductoListComponent,
+    FilterComponent,
+    CatalogoComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +32,8 @@ import { TallaService } from './services/talla.service';
   ],
   providers: [
     ProductoService,
-    TallaService
+    TallaService,
+    CategoriaService
   ],
   bootstrap: [AppComponent]
 })

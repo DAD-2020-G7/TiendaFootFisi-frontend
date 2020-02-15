@@ -1,0 +1,17 @@
+<div class="col-md-4" *ngFor="let prod of productos">
+    <div class="card text-center">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            {{prod.sNombre}}
+            <button class="btn btn-danger">
+                <i class="far fa-trash-alt"></i>
+            </button>
+        </div>
+        <img [src]="prod.sFoto" class="card-img-top">
+        <div class="card-body">
+            <p>{{prod.sDescripcion}}</p>
+            <a href="" class="btn btn-info btn-block">
+                Editar producto
+            </a>
+        </div>
+    </div>
+</div>

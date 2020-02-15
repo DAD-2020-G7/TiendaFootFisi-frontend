@@ -1,15 +1,14 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 
-import { ProductoService } from '../../../services/producto.service';
-import { Producto } from '../../../models/Producto';
+import { ProductoService } from '../../services/producto.service';
 
 @Component({
-  selector: 'app-producto-list',
-  templateUrl: './producto-list.component.html',
-  styleUrls: ['./producto-list.component.css']
+  selector: 'app-catalogo',
+  templateUrl: './catalogo.component.html',
+  styleUrls: ['./catalogo.component.css']
 })
-export class ProductoListComponent implements OnInit {
-  
+export class CatalogoComponent implements OnInit {
+
   @HostBinding('class') classes = 'row';
   
   productos: any = [];
@@ -24,5 +23,5 @@ export class ProductoListComponent implements OnInit {
       err => console.log(err)
     );
   }
-
+  
 }

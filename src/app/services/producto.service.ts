@@ -8,7 +8,7 @@ import { Producto } from '../models/Producto';
 })
 export class ProductoService {
 
-  API_URI = "http://localhost:8083/api/producto";
+  API_URI = "https://tienda-foot-fisi-backend.herokuapp.com/api/producto";
 
   constructor(private http: HttpClient) { }
 

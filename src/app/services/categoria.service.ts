@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CategoriaService {
   
-  API_URI = "http://localhost:8083/api/categoria/listar";
+  API_URI = "https://tienda-foot-fisi-backend.herokuapp.com/api/categoria/listar";
 
   constructor(private http: HttpClient) { }
 
