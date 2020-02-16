@@ -1,0 +1,17 @@
+/* Made with love by Mutiullah Samim*/
+
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+.display{
+    background-image: url('https://i.pinimg.com/originals/31/dc/6c/31dc6c4d73633096bb1d31d19ff70409.jpg');
+    height: 565px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.container{
+height: 100%;
+align-content: center;
+}

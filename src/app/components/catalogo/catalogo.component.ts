@@ -2,15 +2,15 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 
 import { ProductoService } from '../../services/producto.service';
 
+import { Filter } from '../../models/Filter';
+
 @Component({
   selector: 'app-catalogo',
   templateUrl: './catalogo.component.html',
   styleUrls: ['./catalogo.component.css']
 })
 export class CatalogoComponent implements OnInit {
-
-  @HostBinding('class') classes = 'row';
-  
+    
   productos: any = [];
 
   constructor(private productoService: ProductoService) { }
@@ -23,5 +23,14 @@ export class CatalogoComponent implements OnInit {
       err => console.log(err)
     );
   }
-  
+
+  catalogoFiltrado(filter: Filter){
+    this.productoService.getProductoFiltro(filter).subscribe(
+      res => {
+        this.productos = res;
+      },
+      err => console.log(err)
+    );
+  }
+
 }

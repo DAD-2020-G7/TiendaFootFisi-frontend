@@ -4,14 +4,14 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class TallaService {
+export class TipoDocumentoService {
 
-  API_URI = "https://tienda-foot-fisi-backend.herokuapp.com/api/talla";
-  //API_URI = "http://localhost:8083/api/talla";
+  API_URI = "https://tienda-foot-fisi-backend.herokuapp.com/api/tipodocumento";
+  //API_URI = "http://localhost:8083/api/tipodocumento";
 
   constructor(private http: HttpClient) { }
 
-  getTalla(){
+  getTipoDocumentos(){
     return this.http.get(`${this.API_URI}/listar`);
   }
 

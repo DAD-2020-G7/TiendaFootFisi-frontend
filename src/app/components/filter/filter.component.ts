@@ -1,4 +1,6 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { CatalogoComponent } from '../../components/catalogo/catalogo.component';
 
 import { TallaService } from '../../services/talla.service';
 import { CategoriaService } from '../../services/categoria.service';
@@ -11,8 +13,8 @@ import { Filter } from '../../models/Filter';
   styleUrls: ['./filter.component.css']
 })
 export class FilterComponent implements OnInit {
-  
-  @HostBinding('class') classes = 'row';
+
+  @ViewChild(CatalogoComponent, {static: false}) catalogoComponent: CatalogoComponent;
   
   filter: Filter ={
     idCategoria: 0,
@@ -63,6 +65,11 @@ export class FilterComponent implements OnInit {
       },
       err => console.log(err)
     );
+  }
+
+  filtrar(){
+    console.log(this.filter);
+    this.catalogoComponent.catalogoFiltrado(this.filter);
   }
 
 }

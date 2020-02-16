@@ -1,0 +1,58 @@
+<div class="display">
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card text-center">
+                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        Registro
+                    </div>
+                    <div class="card-body align-items-center">
+                        <form>
+                            <div class="form-group row">
+                                <label class="col-md-2 col-form-label">Tipo de documento</label>
+                                <select class="form-control col-md-3" name="sIdTipoDocumento" [(ngModel)]="cliente.sIdTipoDocumento">
+                                    <option value="">--Seleccione tipo de documento--</option>
+                                    <option *ngFor="let tipoDocumento of tipoDocumentos" value={{tipoDocumento.sIdTipoDocumento}}>{{tipoDocumento.sDescripcionCorta}}</option>
+                                </select>
+                                <label class="col-md-2 col-form-label">Nro. de documento</label>
+                                <input type="text" name="sNumeroDocumento" [(ngModel)]="cliente.sNumeroDocumento" class="form-control col-md-3">
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-2 col-form-label">Ap. paterno</label>
+                                <input type="text" name="sApellidoPaterno" [(ngModel)]="cliente.sApellidoPaterno" class="form-control col-md-3">
+                                <label class="col-md-2 col-form-label">Ap. materno</label>
+                                <input type="text" name="sAapellidoMaterno" [(ngModel)]="cliente.sAapellidoMaterno" class="form-control col-md-3">
+                            </div>    
+                            <div class="form-group row">
+                                <label class="col-md-2 col-form-label">Nombres</label>
+                                <input type="text" name="sNombres" [(ngModel)]="cliente.sNombres" class="form-control col-md-3">
+                                <label class="col-md-2 col-form-label">Celular</label>
+                                <input type="text" name="sCelular" [(ngModel)]="cliente.sCelular" class="form-control col-md-3">
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-2 col-form-label">Direccion</label>
+                                <input type="text" name="sDireccion" [(ngModel)]="cliente.sDireccion" class="form-control col-md-3">
+                                <label class="col-md-2 col-form-label">Correo electrónico</label>
+                                <input type="text" name="sCorreoElectronico" [(ngModel)]="cliente.sCorreoElectronico" class="form-control col-md-3">
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-2 col-form-label">Usuario</label>
+                                <input type="text" name="sIdUsuario" [(ngModel)]="cliente.sIdUsuario" class="form-control col-md-3">
+                                <label class="col-md-2 col-form-label">Contraseña</label>
+                                <input type="text" name="sContrasenia" [(ngModel)]="cliente.sContrasenia" class="form-control col-md-3">
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-8"></div>
+                                <div class="col-md-2">
+                                    <button class="btn btn-info btn-block" (click)="registrarCliente()">
+                                        Registrar
+                                    </button>        
+                                </div>        
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

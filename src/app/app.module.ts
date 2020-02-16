@@ -5,15 +5,26 @@ import { FormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavegacionComponent } from './components/navegacion/navegacion.component';
-import { ProductoFormComponent } from './components/form/producto-form/producto-form.component';
-import { ProductoListComponent } from './components/list/producto-list/producto-list.component';
 
+/**
+ * Service
+ */
 import { ProductoService } from './services/producto.service';
 import { TallaService } from './services/talla.service';
 import { CategoriaService } from './services/categoria.service';
+import { TipoDocumentoService } from './services/tipo-documento.service';
+import { ClienteService } from './services/cliente.service';
+
+/**
+ * Component
+ */
+import { NavegacionComponent } from './components/navegacion/navegacion.component';
+import { ProductoFormComponent } from './components/form/producto-form/producto-form.component';
+import { ProductoListComponent } from './components/list/producto-list/producto-list.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
+import { ClienteFormComponent } from './components/form/cliente-form/cliente-form.component';
+import { LoginFormComponent } from './components/form/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +33,9 @@ import { CatalogoComponent } from './components/catalogo/catalogo.component';
     ProductoFormComponent,
     ProductoListComponent,
     FilterComponent,
-    CatalogoComponent
+    CatalogoComponent,
+    ClienteFormComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +46,9 @@ import { CatalogoComponent } from './components/catalogo/catalogo.component';
   providers: [
     ProductoService,
     TallaService,
-    CategoriaService
+    CategoriaService,
+    TipoDocumentoService,
+    ClienteService
   ],
   bootstrap: [AppComponent]
 })
