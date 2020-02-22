@@ -20,6 +20,7 @@ export class CarritoComponent implements OnInit {
   ngOnInit() {
     this.productos = this._carritoService.getItems()
     this.calcularMontoTotal();
+    console.log(this.productos )
   }
 
   eliminarItem(item, value) {

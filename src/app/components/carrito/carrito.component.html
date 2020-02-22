@@ -26,29 +26,33 @@
             </div>
 
             <div
-                style="flex-direction: column; display: flex; align-items: flex-start; justify-content: center; width: 50%;">
+                style="flex-direction: column; display: flex; align-items: flex-start; justify-content: center; width: 40%;">
                 <span style="font-weight: 600;">{{item.sDescripcion}} </span>
                 <span style="font-size: 12px; font-weight: 300;">ID: 000000241 (S/
                     {{item.nPrecioUnitario | number: '1.2-2'}})</span>
             </div>
 
             <div class="centradoVertical" style="width: 20%;">
-
-                <button mat-button (click)="reducir(i)">
-                    -
-                </button>
+                <button mat-button (click)="reducir(i)"> - </button>
                 <div style="border: 1px solid #ccc; width: 40px; text-align: center; padding: 6px; border-radius: 4px;">
                     {{item.cantidad}}
                 </div>
-                <button mat-button (click)="aumentar(i)">
-                    +
-                </button>
+                <button mat-button (click)="aumentar(i)"> + </button>
+            </div>
 
+            <div class="centradoVertical" style="width: 20%;">
+                <mat-form-field style="width: 120px">
+                    <mat-label>Talla:</mat-label>
+                    <mat-select>
+                        <mat-option value="talla.nIdTalla" *ngFor="let talla of item.lTallas">{{talla.sDescripcion}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
 
             <div
-                style="display: flex; align-items: flex-end; justify-content: center; flex-direction: column; width: 20%;">
-                <span style="font-weight: 600; font-size: 19px;">S/ {{item.nPrecioUnitario * item.cantidad| number: '1.2-2'}}</span>
+                style="display: flex; align-items: flex-end; justify-content: center; flex-direction: column; width: 10%;">
+                <span style="font-weight: 600; font-size: 19px;">S/
+                    {{item.nPrecioUnitario * item.cantidad| number: '1.2-2'}}</span>
                 <a style="color: rgb(90, 206, 167); text-decoration: underline; cursor: pointer;">Ir al producto</a>
                 <span style="font-size: 12px; color: firebrick; cursor: pointer;"
                     (click)="eliminarItem(item, i)">Eliminar</span>
