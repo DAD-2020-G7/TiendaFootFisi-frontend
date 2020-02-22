@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CarritoService } from 'src/app/services/carrito.service';
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carrito',
@@ -12,7 +13,8 @@ export class CarritoComponent implements OnInit {
   productos: any;
   montoTotal: number = 0;
   constructor(
-    public _carritoService: CarritoService
+    public _carritoService: CarritoService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -94,11 +96,43 @@ export class CarritoComponent implements OnInit {
       }
     )
 
-    console.log(tramaEnvio);
-    this._carritoService.pagarOrden(tramaEnvio).subscribe(
-      res => { console.log(res) },
-      error => { console.log(error) }
-    )
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "Se eliminará el producto de la lista",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelr'
+    }).then((result) => {
+      if (result.value) {
+
+        this._carritoService.pagarOrden(tramaEnvio).subscribe(
+          (res: any) => {
+            if (res.sTipo == 1)
+              Swal.fire(
+                '¡Listo!',
+                'El pedido ha sido confirmado',
+                'success'
+              ).then(result => {
+                this._carritoService.clearCart();
+                this._carritoService.getItems();
+                this.router.navigateByUrl("catalogo")
+              })
+          },
+          error => {
+            console.log(error)
+            Swal.fire(
+              '¡Ups!',
+              'Algo salió mañ',
+              'error'
+            )
+          }
+        )
+      }
+    })
+
 
   }
 

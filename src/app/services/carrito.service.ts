@@ -62,6 +62,7 @@ export class CarritoService implements OnInit {
 
     clearCart() {
         this.items = [].slice();
+        this.longitud = 0;
         localStorage.removeItem('productos')
     }
 
