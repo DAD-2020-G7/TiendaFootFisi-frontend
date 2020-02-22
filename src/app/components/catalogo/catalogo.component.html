@@ -12,6 +12,10 @@
                 <div class="card-body">
                     <p>{{prod.sDescripcion}}</p>
                 </div>
+                <div class="card-footer align-items-center">
+                    <h4>Tallas disponibles</h4>
+                    <span class="badge badge-pill badge-success mr-1" *ngFor="let talla of prod.lTallas"><p class="card-text text-center text-talla">{{talla.sDescripcion}}</p></span>        
+                </div>
             </div>
         </div>
     </div>

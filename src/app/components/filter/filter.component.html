@@ -8,28 +8,25 @@
                 <div class="card-body">
                     <form>
                         <div class="form-group row">
+                            <label class="col-md-2 col-form-label">Nombre</label>
+                            <input type="text" name="sNombre" [(ngModel)]="filter.sNombre"class="form-control col-md-3">
                             <label for="staticEmail" class="col-md-2 col-form-label">Marca</label>
                             <select class="form-control col-md-3" name="sMarca" (change)="comboMarca()" [(ngModel)]="filter.sMarca">
                                 <option value="">--Seleccione marca--</option>
                                 <option *ngFor="let marca of marcas">{{marca.sMarca}}</option>
                             </select>
+                        </div>
+        
+                        <div class="form-group row">
                             <label for="staticEmail" class="col-md-2 col-form-label">Genero</label>
                             <select class="form-control col-md-3" name="sGenero" (change)="comboGenero()" [(ngModel)]="filter.sGenero">
                                 <option value="">--Seleccione genero--</option>
                                 <option *ngFor="let genero of generos" >{{genero.sGenero}}</option>
                             </select>
-                        </div>
-        
-                        <div class="form-group row">
                             <label for="staticEmail" class="col-md-2 col-form-label">Tipo</label>
                             <select class="form-control col-md-3" name="sTipo" [(ngModel)]="filter.sTipo">
                                 <option value="">--Seleccione tipo--</option>
                                 <option *ngFor="let tipo of tipos" value={{tipo.sTipo}}>{{tipo.sTipo}}</option>
-                            </select>
-                            <label for="staticEmail" class="col-md-2 col-form-label">Talla</label>
-                            <select class="form-control col-md-3" name="sTalla" [(ngModel)]="filter.sTalla">
-                                <option value="">--Seleccione talla--</option>
-                                <option *ngFor="let talla of tallas" value={{talla.sDescripcion}}>{{talla.sDescripcion}}</option>
                             </select>
                         </div>
         

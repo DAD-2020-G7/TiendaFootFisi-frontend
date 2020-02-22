@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { CatalogoComponent } from '../../components/catalogo/catalogo.component';
 
-import { TallaService } from '../../services/talla.service';
 import { CategoriaService } from '../../services/categoria.service';
 
 import { Filter } from '../../models/Filter';
@@ -17,13 +16,12 @@ export class FilterComponent implements OnInit {
   @ViewChild(CatalogoComponent, {static: false}) catalogoComponent: CatalogoComponent;
   
   filter: Filter ={
+    sNombre: '',
+
     idCategoria: 0,
     sMarca: '',
     sGenero: '',
-    sTipo: '',
-
-    idTalla: 0,
-    sTalla: '',
+    sTipo: ''
   };
 
   tallas: any = [];
@@ -32,15 +30,9 @@ export class FilterComponent implements OnInit {
   generos: any = [];
   tipos: any = [];
 
-  constructor(private tallaService: TallaService, private categoriaService: CategoriaService) { }
+  constructor(private categoriaService: CategoriaService) { }
 
   ngOnInit() {
-    this.tallaService.getTalla().subscribe(
-      res => {
-        this.tallas = res;
-      },
-      err => console.log(err)
-    );
     this.categoriaService.getMarcas().subscribe(
       res => {
         this.marcas = res;
