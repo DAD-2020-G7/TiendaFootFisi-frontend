@@ -25,6 +25,7 @@ import { FilterComponent } from './components/filter/filter.component';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { ClienteFormComponent } from './components/form/cliente-form/cliente-form.component';
 import { LoginFormComponent } from './components/form/login-form/login-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { LoginFormComponent } from './components/form/login-form/login-form.comp
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     ProductoService,
