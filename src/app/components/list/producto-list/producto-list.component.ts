@@ -9,12 +9,12 @@ import { Producto } from '../../../models/Producto';
   styleUrls: ['./producto-list.component.css']
 })
 export class ProductoListComponent implements OnInit {
-  
+
   @HostBinding('class') classes = 'row';
-  
+
   productos: any = [];
 
-  constructor(private productoService: ProductoService) { }
+  constructor(public productoService: ProductoService) { }
 
   ngOnInit() {
     this.productoService.getProductos().subscribe(

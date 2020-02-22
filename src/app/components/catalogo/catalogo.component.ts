@@ -15,8 +15,8 @@ export class CatalogoComponent implements OnInit {
   productos: any = [];
 
   constructor(
-    private productoService: ProductoService,
-    private _carritoService: CarritoService
+    public productoService: ProductoService,
+    public _carritoService: CarritoService
   ) { }
 
   ngOnInit() {
