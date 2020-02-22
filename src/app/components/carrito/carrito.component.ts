@@ -62,7 +62,7 @@ export class CarritoComponent implements OnInit {
 
   aumentar(i) {
     this.productos[i].cantidad < 10 ?
-      this.productos[i].cantidad = this.productos[i].cantidad + 1 : null
+      this.productos[i].cantidad++ : null
     this.calcularMontoTotal()
   }
 
@@ -72,6 +72,7 @@ export class CarritoComponent implements OnInit {
       tipoComp: 1,
       codEstablecimiento: "967",
       numeroSerie: "00000001",
+      tipoDoc: "06",
       numeroDoc: "10770349767",
       nombrePer: "TORRES MORI CARLOS ALBERTO",
       direccionPer: "ASOC. SAN JUAN BAUTISTA",
