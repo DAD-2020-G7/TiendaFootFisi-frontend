@@ -11,7 +11,7 @@ export class CarritoComponent implements OnInit {
   productos: any;
 
   constructor(
-    private _carritoService: CarritoService
+    public _carritoService: CarritoService
   ) { }
 
   ngOnInit() {

@@ -9,7 +9,7 @@ import { CarritoService } from 'src/app/services/carrito.service';
 export class NavegacionComponent implements OnInit {
 
   constructor(
-    private _carritoService: CarritoService
+    public _carritoService: CarritoService
   ) { }
 
   ngOnInit() {
