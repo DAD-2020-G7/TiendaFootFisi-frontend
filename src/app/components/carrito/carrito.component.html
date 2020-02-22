@@ -1,4 +1,12 @@
-<div class="container">
+<div *ngIf="_carritoService.longitud == 0"
+    style="width: 100%; height: calc(100vh - 92px); display: flex; justify-content: center; align-items: center; flex-direction: column;">
+    <img src="assets/empty-cart.png" width="250px" height="250px">
+    <div style="font-size: 20px; margin-top: 15px;">
+        El carrito de compras está vacío y triste.
+    </div>
+</div>
+
+<div *ngIf="_carritoService.longitud != 0" class="container">
 
     <div class="mt-5 mb-5">
         <div style="font-size: 34px; font-weight: 300;">
@@ -9,7 +17,7 @@
         </div>
     </div>
 
-    <div class="mt-1" *ngFor="let item of productos">
+    <div class="mt-1" *ngFor="let item of productos; let i = index">
 
         <div style="display: flex; height: 110px; padding: 0px 20px 0px 20px; ">
 
@@ -20,7 +28,8 @@
             <div
                 style="flex-direction: column; display: flex; align-items: flex-start; justify-content: center; width: 40%;">
                 <span style="font-weight: 600;">{{item.sNombre}} </span>
-                <span style="font-size: 12px; font-weight: 300;">ID: 000000241 (S/ {{item.nPrecioUnitario | number: '1.2-2'}})</span>
+                <span style="font-size: 12px; font-weight: 300;">ID: 000000241 (S/
+                    {{item.nPrecioUnitario | number: '1.2-2'}})</span>
             </div>
 
             <div class="centradoVertical" style="width: 39%;">
@@ -41,7 +50,8 @@
                 style="display: flex; align-items: flex-end; justify-content: center; flex-direction: column; width: 20%;">
                 <span style="font-weight: 600; font-size: 19px;">S/ {{item.nPrecioUnitario | number: '1.2-2'}}</span>
                 <a style="color: rgb(90, 206, 167); text-decoration: underline; cursor: pointer;">Ir al producto</a>
-                <span style="font-size: 12px; color: firebrick; cursor: pointer;">Eliminar</span>
+                <span style="font-size: 12px; color: firebrick; cursor: pointer;"
+                    (click)="eliminarItem(item, i)">Eliminar</span>
             </div>
 
         </div>
@@ -50,7 +60,8 @@
 
     <mat-divider class="mt-2"></mat-divider>
 
-    <div style="display: flex; justify-content: center; align-items: flex-end; flex-direction: column;" class="mt-4">
+    <div style="display: flex; justify-content: center; align-items: flex-end; flex-direction: column;"
+        class="mt-4 mb-5">
         <div style="width: 400px; display: flex;">
             <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start;">
                 <span style="font-weight: 600;">Orden Subtotal</span>

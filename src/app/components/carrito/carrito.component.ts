@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarritoService } from 'src/app/services/carrito.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-carrito',
@@ -17,6 +18,16 @@ export class CarritoComponent implements OnInit {
   ngOnInit() {
     this.productos = this._carritoService.getItems()
     console.log(this.productos)
+  }
+
+  eliminarItem(item, value) {
+    this._carritoService.eliminarItem(value);
+    this.productos = this._carritoService.getItems()
+    Swal.fire(
+      '¡Eliminado!',
+      'El producto ha sido removido satisfactoriamente',
+      'success'
+    )
   }
 
 }

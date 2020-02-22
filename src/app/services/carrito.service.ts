@@ -80,9 +80,7 @@ export class CarritoService {
         cadenaProductos === '' ?
             localStorage.removeItem('productos') :
             localStorage.setItem('productos', cadenaProductos)
-
         this.longitud--;
-        console.log(this.longitud)
     }
 }
 
