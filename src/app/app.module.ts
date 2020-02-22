@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,7 +25,14 @@ import { FilterComponent } from './components/filter/filter.component';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { ClienteFormComponent } from './components/form/cliente-form/cliente-form.component';
 import { LoginFormComponent } from './components/form/login-form/login-form.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
+
+/**
+ * Modulos 
+ */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from 'src/assets/material.module';
+
 
 @NgModule({
   declarations: [
@@ -36,14 +43,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FilterComponent,
     CatalogoComponent,
     ClienteFormComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [
     ProductoService,

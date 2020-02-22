@@ -6,6 +6,7 @@ import { ProductoFormComponent } from './components/form/producto-form/producto-
 import { FilterComponent } from './components/filter/filter.component';
 import { LoginFormComponent } from './components/form/login-form/login-form.component';
 import { ClienteFormComponent } from './components/form/cliente-form/cliente-form.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
 
 const routes: Routes = [
   {
@@ -15,23 +16,27 @@ const routes: Routes = [
   },
   {
     path: 'catalogo',
-    component : FilterComponent
+    component: FilterComponent
   },
   {
     path: 'productos',
-    component : ProductoListComponent
+    component: ProductoListComponent
   },
   {
     path: 'productos/agregar',
-    component : ProductoFormComponent
+    component: ProductoFormComponent
   },
   {
     path: 'login',
-    component : LoginFormComponent
+    component: LoginFormComponent
   },
   {
     path: 'registrar',
-    component : ClienteFormComponent
+    component: ClienteFormComponent
+  },
+  {
+    path: 'carrito',
+    component: CarritoComponent
   }
 ];
 

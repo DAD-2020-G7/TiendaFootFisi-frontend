@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { CarritoService } from 'src/app/services/carrito.service';
 
 @Component({
-  selector: 'app-navegacion',
-  templateUrl: './navegacion.component.html',
-  styleUrls: ['./navegacion.component.css']
+  selector: 'app-carrito',
+  templateUrl: './carrito.component.html',
+  styleUrls: ['./carrito.component.css']
 })
-export class NavegacionComponent implements OnInit {
+export class CarritoComponent implements OnInit {
 
   constructor(
     private _carritoService: CarritoService
