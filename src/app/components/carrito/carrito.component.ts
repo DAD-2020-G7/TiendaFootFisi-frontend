@@ -8,11 +8,15 @@ import { CarritoService } from 'src/app/services/carrito.service';
 })
 export class CarritoComponent implements OnInit {
 
+  productos: any;
+
   constructor(
     private _carritoService: CarritoService
   ) { }
 
   ngOnInit() {
+    this.productos = this._carritoService.getItems()
+    console.log(this.productos)
   }
 
 }
