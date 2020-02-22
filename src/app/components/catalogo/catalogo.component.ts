@@ -1,9 +1,8 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 import { ProductoService } from '../../services/producto.service';
-
 import { Filter } from '../../models/Filter';
 import { CarritoService } from 'src/app/services/carrito.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-catalogo',
@@ -23,7 +22,6 @@ export class CatalogoComponent implements OnInit {
     this.productoService.getProductos().subscribe(
       res => {
         this.productos = res;
-        console.log(this.productos)
       },
       err => console.log(err)
     );
@@ -39,7 +37,13 @@ export class CatalogoComponent implements OnInit {
   }
 
   addItem(item) {
+    item['cantidad'] = 1
     this._carritoService.addToCart(item)
+    Swal.fire(
+      '¡Correcto!',
+      'El producto se ha añadido correctamente al carrito',
+      'success'
+    )
   }
 
 }

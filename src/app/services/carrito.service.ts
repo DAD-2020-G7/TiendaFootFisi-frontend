@@ -1,16 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
 })
 
-export class CarritoService {
+export class CarritoService implements OnInit {
 
     items: any[] = [];
     longitud: number = 0;
 
-    constructor() {
+    constructor(private http: HttpClient) {
         this.llenarCarrito();
+    }
+
+    ngOnInit() {
+
     }
 
     llenarCarrito() {
@@ -82,5 +87,12 @@ export class CarritoService {
             localStorage.setItem('productos', cadenaProductos)
         this.longitud--;
     }
+
+    pagarOrden(json) {
+        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+        return this.http.post('https://tienda-foot-fisi-backend.herokuapp.com/api/pedido/registrar', json, { headers })
+    }
+
+
 }
 

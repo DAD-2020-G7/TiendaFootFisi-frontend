@@ -26,21 +26,21 @@
             </div>
 
             <div
-                style="flex-direction: column; display: flex; align-items: flex-start; justify-content: center; width: 40%;">
-                <span style="font-weight: 600;">{{item.sNombre}} </span>
+                style="flex-direction: column; display: flex; align-items: flex-start; justify-content: center; width: 50%;">
+                <span style="font-weight: 600;">{{item.sDescripcion}} </span>
                 <span style="font-size: 12px; font-weight: 300;">ID: 000000241 (S/
                     {{item.nPrecioUnitario | number: '1.2-2'}})</span>
             </div>
 
-            <div class="centradoVertical" style="width: 39%;">
+            <div class="centradoVertical" style="width: 20%;">
 
-                <button mat-button>
+                <button mat-button (click)="reducir(i)">
                     -
                 </button>
                 <div style="border: 1px solid #ccc; width: 40px; text-align: center; padding: 6px; border-radius: 4px;">
-                    1
+                    {{item.cantidad}}
                 </div>
-                <button mat-button>
+                <button mat-button (click)="aumentar(i)">
                     +
                 </button>
 
@@ -48,7 +48,7 @@
 
             <div
                 style="display: flex; align-items: flex-end; justify-content: center; flex-direction: column; width: 20%;">
-                <span style="font-weight: 600; font-size: 19px;">S/ {{item.nPrecioUnitario | number: '1.2-2'}}</span>
+                <span style="font-weight: 600; font-size: 19px;">S/ {{item.nPrecioUnitario * item.cantidad| number: '1.2-2'}}</span>
                 <a style="color: rgb(90, 206, 167); text-decoration: underline; cursor: pointer;">Ir al producto</a>
                 <span style="font-size: 12px; color: firebrick; cursor: pointer;"
                     (click)="eliminarItem(item, i)">Eliminar</span>
@@ -69,11 +69,11 @@
             </div>
             <span style="flex:  1 1 auto;"></span>
             <div style="display: flex; justify-content: end; align-items: center; font-size: 25px; font-weight: 500;">
-                S/ 299.00
+                S/ {{montoTotal | number: '1.2-2'}}
             </div>
         </div>
-        <div class="mt-1">
-            <button mat-raised-button
+        <div class="mt-2">
+            <button mat-raised-button (click)="pagar()"
                 style="width: 400px; font-size: 18px; padding: 5px; background-color: #2C3E50; color: #fff;">
                 CONFIRMAR PAGO
             </button>
