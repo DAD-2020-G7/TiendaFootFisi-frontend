@@ -1,4 +1,5 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 
 import { ProductoService } from '../../../services/producto.service';
 import { TallaService } from '../../../services/talla.service';
@@ -23,8 +24,7 @@ export class ProductoFormComponent implements OnInit {
     sGenero: '',
     sTipo: '',
 
-    idTalla: 0,
-    sTalla: '',
+    lTallas:[],
 
     sNombre: '',
     sDescripcion: '',
@@ -39,12 +39,24 @@ export class ProductoFormComponent implements OnInit {
   generos: any = [];
   tipos: any = [];
 
+  dropdownSettings:IDropdownSettings = {};
+
   constructor(private tallaService: TallaService, private productoService: ProductoService, private categoriaService: CategoriaService) { }
 
   ngOnInit() {
     this.tallaService.getTalla().subscribe(
       res => {
         this.tallas = res;
+        this.producto.lTallas = [];
+        this.dropdownSettings = {
+          singleSelection: false,
+          idField: 'nIdTalla',
+          textField: 'sDescripcion',
+          selectAllText: 'Select All',
+          unSelectAllText: 'UnSelect All',
+          itemsShowLimit: 3,
+          allowSearchFilter: true
+        };
       },
       err => console.log(err)
     );
@@ -54,11 +66,17 @@ export class ProductoFormComponent implements OnInit {
       },
       err => console.log(err)
     );
+    
   }
 
   guardarProducto() {
-    this.producto.idTalla = this.tallas.find(x => x.sDescripcion == this.producto.sTalla).nIdTalla;
     this.producto.idCategoria = this.tipos.find(x => (x.sMarca == this.producto.sMarca && x.sGenero == this.producto.sGenero && x.sTipo == this.producto.sTipo)).nIdCategoria;
+    this.productoService.saveProducto(this.producto).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => console.log(err)
+    );
     console.log(this.producto);
   }
 
@@ -80,4 +98,11 @@ export class ProductoFormComponent implements OnInit {
     );
   }
 
+  onItemSelect(item: any) {
+    
+  }
+  onSelectAll(items: any) {
+    //this.producto.tallas = items;
+  }
+ 
 }

@@ -27,7 +27,7 @@ export class ProductoService {
   }
 
   saveProducto(producto: Producto){
-    return this.http.post(`${this.API_URI}/producto`, producto);
+    return this.http.post(`${this.API_URI}/registrar`, producto);
   }
 
   updateProducto(){

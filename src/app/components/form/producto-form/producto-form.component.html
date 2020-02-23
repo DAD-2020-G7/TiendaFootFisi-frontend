@@ -1,52 +1,84 @@
-<div class="col-md-4 offset-md-4">
+<div class="col-md-8">
     <div class="card">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            Formulario de registro
+        </div>
         <div class="card-body">
             <form>
-                <div class="form-group">
-                    <input type="text" name="sNombre" [(ngModel)]="producto.sNombre" placeholder="Nombre" class="form-control">
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label offset-md-1">Nombre</label>
+                    <input type="text" name="sNombre" [(ngModel)]="producto.sNombre" class="form-control col-md-8">
                 </div>
-                <div class="form-group">
-                    <input type="text" name="sDescripcion" [(ngModel)]="producto.sDescripcion" placeholder="Descripción" class="form-control">
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label offset-md-1">Descripción</label>
+                    <textarea type="text" name="sDescripcion" [(ngModel)]="producto.sDescripcion" rows="2"
+                        class="form-control col-md-8"></textarea>
                 </div>
-                <div class="form-group">
-                    <input type="text" name="nPrecioUnitario" [(ngModel)]="producto.nPrecioUnitario" placeholder="Precio unitario" class="form-control">
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label offset-md-1">Precio unitario</label>
+                    <input type="text" name="nPrecioUnitario" [(ngModel)]="producto.nPrecioUnitario"
+                        class="form-control col-md-3">
+                    <label class="col-md-2 col-form-label">Cantidad</label>
+                    <input type="text" name="nCantidad" [(ngModel)]="producto.nCantidad" class="form-control col-md-3">
                 </div>
-                <div class="form-group">
-                    <input type="text" name="nCantidad" [(ngModel)]="producto.nCantidad" placeholder="Cantidad" class="form-control">
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label offset-md-1">URL imagen</label>
+                    <input type="text" name="sFoto" [(ngModel)]="producto.sFoto" class="form-control col-md-8">
                 </div>
-                <div class="form-group">
-                    <input type="text" name="sFoto" [(ngModel)]="producto.sFoto" placeholder="Url foto" class="form-control">
-                </div>
-                <div class="form-group">
-                    <select class="form-control" name="sTalla" [(ngModel)]="producto.sTalla">
-                        <option value="">--Seleccione talla--</option>
-                        <option *ngFor="let talla of tallas" value={{talla.sDescripcion}}>{{talla.sDescripcion}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <select class="form-control" name="sMarca" (change)="comboMarca()" [(ngModel)]="producto.sMarca">
-                        <option value="">--Seleccione marca--</option>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label offset-md-1">Marca</label>
+                    <select class="form-control col-md-3" name="sMarca" (change)="comboMarca()"
+                        [(ngModel)]="producto.sMarca">
+                        <option value="">Seleccione marca</option>
                         <option *ngFor="let marca of marcas">{{marca.sMarca}}</option>
                     </select>
-                </div>
-                <div class="form-group">
-                    <select class="form-control" name="sGenero" (change)="comboGenero()" [(ngModel)]="producto.sGenero">
-                        <option value="">--Seleccione genero--</option>
-                        <option *ngFor="let genero of generos" >{{genero.sGenero}}</option>
+                    <label class="col-md-2 col-form-label">Género</label>
+                    <select class="form-control col-md-3" name="sGenero" (change)="comboGenero()"
+                        [(ngModel)]="producto.sGenero">
+                        <option value="">Seleccione genero</option>
+                        <option *ngFor="let genero of generos">{{genero.sGenero}}</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <select class="form-control" name="sTipo" [(ngModel)]="producto.sTipo">
-                        <option value="">--Seleccione tipo--</option>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label offset-md-1">Tipo</label>
+                    <select class="form-control col-md-3" name="sTipo" [(ngModel)]="producto.sTipo">
+                        <option value="">Seleccione tipo</option>
                         <option *ngFor="let tipo of tipos" value={{tipo.sTipo}}>{{tipo.sTipo}}</option>
                     </select>
+                    <label class="col-md-2 col-form-label">Tallas</label>
+                    <ng-multiselect-dropdown [data]="tallas" [settings]="dropdownSettings"
+                        [(ngModel)]="producto.lTallas" [ngModelOptions]="{standalone: true}"
+                        (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" class="col-md-3 col-form">
+                    </ng-multiselect-dropdown>
                 </div>
-                <button class="btn btn-success btn-block" (click)="guardarProducto()">
-                    Guardar
-                </button>
+
+                <div class="form-group row">
+
+                </div>
+
+                <div class="form-group row">
+                    <button class="btn btn-success btn-block col-md-3 offset-md-8" (click)="guardarProducto()">
+                        Guardar
+                    </button>
+                </div>
             </form>
         </div>
     </div>
 </div>
 
-
+<div class="col-md-4">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+        {{producto.sNombre == '' ? 'Nombre de producto' : producto.sNombre}}
+    </div>
+    <div class="card card-body text-center">
+        <img [src]="producto.sFoto == '' ? '/assets/no-image.png' : producto.sFoto" alt="No Image"
+            class="card-img-top imagen">
+        <p>{{producto.sDescripcion == '' ? 'Escribir descripción' : producto.sDescripcion}}</p>
+    </div>
+    <div class="card-footer align-items-center">
+        <h4>Tallas disponibles</h4>
+        <span class="badge badge-pill badge-success mr-1" *ngFor="let talla of producto.lTallas">
+            <p class="card-text text-center text-talla">{{talla.sDescripcion}}</p>        
+        </span>
+    </div>
+</div>

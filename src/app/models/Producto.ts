@@ -6,8 +6,7 @@ export interface Producto{
 	sGenero?:string;
 	sTipo?:string;
 
-	idTalla?:number;
-	sTalla?:string;
+	lTallas?:any [];
 
 	sNombre?:string;
 	sDescripcion?:string;
