@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { tableau } from 'tableau-api';
 
 /**
  * Service
@@ -32,6 +33,7 @@ import { CarritoComponent } from './components/carrito/carrito.component';
  */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/assets/material.module';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import { MaterialModule } from 'src/assets/material.module';
     CatalogoComponent,
     ClienteFormComponent,
     LoginFormComponent,
-    CarritoComponent
+    CarritoComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
