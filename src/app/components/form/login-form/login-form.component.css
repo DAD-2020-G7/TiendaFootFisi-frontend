@@ -20,7 +20,7 @@ form>button:disabled {
     height: 40px;
     border-radius: 15px;
     background-color: #2C3E50;
-    opacity: 0.2;
+    opacity: 0.3;
     color: whitesmoke;
 }
 
@@ -33,7 +33,7 @@ form>button:hover:disabled {
     height: 40px;
     border-radius: 15px;
     background-color: #2C3E50;
-    opacity: 0.2;
+    opacity: 0.3;
     color: whitesmoke;
 }
 

@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.css']
 })
+
 export class LoginFormComponent implements AfterViewInit {
+  loading = false;
   Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
@@ -42,8 +44,10 @@ export class LoginFormComponent implements AfterViewInit {
   ) { }
 
   login() {
+    this.loading = true
     this._userService.login(this.loginForm.controls['user'].value, this.loginForm.controls['password'].value).subscribe(
       res => {
+        this.loading = false;
         if (res.sTipo == 4) {
           Swal.fire(
             '¡Error!',
