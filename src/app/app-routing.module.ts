@@ -8,20 +8,21 @@ import { LoginFormComponent } from './components/form/login-form/login-form.comp
 import { ClienteFormComponent } from './components/form/cliente-form/cliente-form.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: '/catalogo',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'catalogo',
-    component: FilterComponent
+    component: FilterComponent,
   },
   {
     path: 'productos',
-    component: ProductoListComponent
+    component: ProductoListComponent,
   },
   {
     path: 'productos/agregar',
@@ -41,7 +42,8 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

@@ -1,58 +1,87 @@
-<div class="display">
-    <div class="container p-4">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card text-center">
-                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                        Registro
-                    </div>
-                    <div class="card-body align-items-center">
-                        <form>
-                            <div class="form-group row">
-                                <label class="col-md-2 col-form-label">Tipo de documento</label>
-                                <select class="form-control col-md-3" name="sIdTipoDocumento" [(ngModel)]="cliente.sIdTipoDocumento">
-                                    <option value="">--Seleccione tipo de documento--</option>
-                                    <option *ngFor="let tipoDocumento of tipoDocumentos" value={{tipoDocumento.sIdTipoDocumento}}>{{tipoDocumento.sDescripcionCorta}}</option>
-                                </select>
-                                <label class="col-md-2 col-form-label">Nro. de documento</label>
-                                <input type="text" name="sNumeroDocumento" [(ngModel)]="cliente.sNumeroDocumento" class="form-control col-md-3">
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-2 col-form-label">Ap. paterno</label>
-                                <input type="text" name="sApellidoPaterno" [(ngModel)]="cliente.sApellidoPaterno" class="form-control col-md-3">
-                                <label class="col-md-2 col-form-label">Ap. materno</label>
-                                <input type="text" name="sAapellidoMaterno" [(ngModel)]="cliente.sAapellidoMaterno" class="form-control col-md-3">
-                            </div>    
-                            <div class="form-group row">
-                                <label class="col-md-2 col-form-label">Nombres</label>
-                                <input type="text" name="sNombres" [(ngModel)]="cliente.sNombres" class="form-control col-md-3">
-                                <label class="col-md-2 col-form-label">Celular</label>
-                                <input type="text" name="sCelular" [(ngModel)]="cliente.sCelular" class="form-control col-md-3">
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-2 col-form-label">Direccion</label>
-                                <input type="text" name="sDireccion" [(ngModel)]="cliente.sDireccion" class="form-control col-md-3">
-                                <label class="col-md-2 col-form-label">Correo electrónico</label>
-                                <input type="text" name="sCorreoElectronico" [(ngModel)]="cliente.sCorreoElectronico" class="form-control col-md-3">
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-2 col-form-label">Usuario</label>
-                                <input type="text" name="sIdUsuario" [(ngModel)]="cliente.sIdUsuario" class="form-control col-md-3">
-                                <label class="col-md-2 col-form-label">Contraseña</label>
-                                <input type="text" name="sContrasenia" [(ngModel)]="cliente.sContrasenia" class="form-control col-md-3">
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-md-8"></div>
-                                <div class="col-md-2">
-                                    <button class="btn btn-info btn-block" (click)="registrarCliente()">
-                                        Registrar
-                                    </button>        
-                                </div>        
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+<div style="background-color: rgba(44, 62, 80, 0.2); width: 100%; height: 100%;  " class="centradoVertical">
+    <div style="max-height: 750px; width: 500px; background-color: white; border-radius: 5px;">
+        <div style="font-size: 26px; font-weight: 600; text-align: center; padding-top: 40px;">
+            REGISTRO
+        </div>
+
+        <div style="padding: 0px 10px 0px 10px;">
+            <mat-vertical-stepper [linear]="true" #stepper>
+                <mat-step [stepControl]="datosPersonales">
+                    <form [formGroup]="datosPersonales">
+                        <ng-template matStepLabel>DATOS PERSONALES</ng-template>
+                        <div style="display: flex;">
+                            <mat-form-field appearance="fill" style="width: 35%;" class="mr-2">
+                                <mat-label>Doc.</mat-label>
+                                <mat-select formControlName="sIdTipoDocumento">
+                                    <mat-option *ngFor="let tipoDocumento of tipoDocumentos"
+                                        [value]="tipoDocumento.sIdTipoDocumento">
+                                        {{tipoDocumento.sDescripcionCorta}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field style="width: 65%;" appearance="fill">
+                                <mat-label>Número de documento</mat-label>
+                                <input matInput formControlName="sNumeroDocumento">
+                            </mat-form-field>
+                        </div>
+                        <div style="display: flex;">
+                            <mat-form-field appearance="fill" class="mr-2" style="width: 49%">
+                                <mat-label>Ap. Paterno</mat-label>
+                                <input matInput formControlName="sApellidoPaterno">
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" style="width: 49%">
+                                <mat-label>Ap. Materno</mat-label>
+                                <input matInput formControlName="sAapellidoMaterno">
+                            </mat-form-field>
+                        </div>
+                        <mat-form-field appearance="fill" style="width: 100%;">
+                            <mat-label>Nombre completo</mat-label>
+                            <input matInput formControlName="sNombres">
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" style="width: 100%;">
+                            <mat-label>Dirección</mat-label>
+                            <input matInput formControlName="sDireccion">
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" style="width: 100%;">
+                            <mat-label>Número de celular</mat-label>
+                            <input matInput formControlName="sCelular">
+                        </mat-form-field>
+                        <button mat-button matStepperNext style="width: 100%;" class="centradoVertical"
+                            [disabled]="!datosPersonales.valid">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                            Siguiente
+                        </button>
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="datosAcceso">
+                    <form [formGroup]="datosAcceso">
+                        <ng-template matStepLabel>CREDENCIALES DE USUARIO</ng-template>
+                        <div class="mt-1">
+                            <mat-form-field appearance="fill" style="width: 100%;">
+                                <mat-label>Correo Electrónico</mat-label>
+                                <input matInput formControlName="sCorreoElectronico">
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" style="width: 100%;">
+                                <mat-label>Usuario</mat-label>
+                                <input matInput formControlName="sIdUsuario">
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" style="width: 100%;">
+                                <mat-label>Contraseña</mat-label>
+                                <input matInput formControlName="sContrasenia">
+                            </mat-form-field>
+                            <button mat-button style="width: 100%;" class="centradoVertical mt-1"
+                                (click)="registrarCliente()" [disabled]="datosAcceso.invalid">
+                                <i class="material-icons">how_to_reg</i>
+                                Finalizar Registro
+                            </button>
+                        </div>
+                    </form>
+                </mat-step>
+            </mat-vertical-stepper>
+        </div>
+        <div class="text-center mt-3 mb-5" style="text-align: center; color: rgb(102, 102, 102);">
+            ¿Ya tienes una cuenta?
+            <a [routerLink]="['/login']">Inicia sesión</a>
         </div>
     </div>
 </div>

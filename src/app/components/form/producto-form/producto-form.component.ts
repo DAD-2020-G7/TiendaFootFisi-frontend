@@ -14,7 +14,6 @@ import { Producto } from '../../../models/Producto';
 })
 export class ProductoFormComponent implements OnInit {
 
-  @HostBinding('class') classes = 'row';
 
   producto: Producto = {
     idProducto: 0,

@@ -38,6 +38,7 @@ export class CatalogoComponent implements OnInit {
 
   addItem(item) {
     item['cantidad'] = 1
+    item['tallaSeleccionada'] = item.lTallas[0]
     this._carritoService.addToCart(item)
     Swal.fire(
       '¡Correcto!',

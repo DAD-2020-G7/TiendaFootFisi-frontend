@@ -1,90 +1,44 @@
-/* Made with love by Mutiullah Samim*/
-
-@import url('https://fonts.googleapis.com/css?family=Numans');
-
-.display{
-    background-image: url('https://i.pinimg.com/originals/31/dc/6c/31dc6c4d73633096bb1d31d19ff70409.jpg');
-    height: 565px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
+*:focus {
+    outline: none;
 }
 
-.container{
-height: 100%;
-align-content: center;
+mat-form-field {
+    width: 80%;
 }
 
-.card{
-height: 370px;
-margin-top: auto;
-margin-bottom: auto;
-width: 400px;
-background-color: rgba(0,0,0,0.5) !important;
+form>button {
+    width: 80%;
+    height: 40px;
+    border-radius: 15px;
+    background-color: #2C3E50;
+    color: whitesmoke;
+    transition: all 0.3s ease-in-out;
 }
 
-.social_icon span{
-font-size: 60px;
-margin-left: 10px;
-color: #FFC312;
+form>button:disabled {
+    width: 80%;
+    height: 40px;
+    border-radius: 15px;
+    background-color: #2C3E50;
+    opacity: 0.2;
+    color: whitesmoke;
 }
 
-.social_icon span:hover{
-color: white;
-cursor: pointer;
+form>button:hover {
+    background-color: black;
 }
 
-.card-header h3{
-color: white;
+form>button:hover:disabled {
+    width: 80%;
+    height: 40px;
+    border-radius: 15px;
+    background-color: #2C3E50;
+    opacity: 0.2;
+    color: whitesmoke;
 }
 
-.social_icon{
-position: absolute;
-right: 20px;
-top: -45px;
-}
-
-.input-group-prepend span{
-width: 50px;
-background-color: #FFC312;
-color: black;
-border:0 !important;
-}
-
-input:focus{
-outline: 0 0 0 0  !important;
-box-shadow: 0 0 0 0 !important;
-
-}
-
-.remember{
-color: white;
-}
-
-.remember input
-{
-width: 20px;
-height: 20px;
-margin-left: 15px;
-margin-right: 5px;
-}
-
-.login_btn{
-color: black;
-background-color: #FFC312;
-width: 100px;
-}
-
-.login_btn:hover{
-color: black;
-background-color: white;
-}
-
-.links{
-color: white;
-}
-
-.links a{
-margin-left: 4px;
+.marcas>i {
+    font-size: 30px;
+    margin-right: 10px;
+    cursor: pointer;
 }

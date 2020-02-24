@@ -1,17 +1,75 @@
-/* Made with love by Mutiullah Samim*/
-
-@import url('https://fonts.googleapis.com/css?family=Numans');
-
-.display{
-    background-image: url('https://i.pinimg.com/originals/31/dc/6c/31dc6c4d73633096bb1d31d19ff70409.jpg');
-    height: 565px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
+*:focus {
+    outline: none;
 }
 
-.container{
-height: 100%;
-align-content: center;
+mat-form-field {
+    width: 80%;
+}
+
+form>button {
+    width: 80%;
+    height: 40px;
+    border-radius: 15px;
+    background-color: #2C3E50;
+    color: whitesmoke;
+    transition: all 0.3s ease-in-out;
+}
+
+form>div>button {
+    width: 80%;
+    height: 40px;
+    border-radius: 15px;
+    background-color: #2C3E50;
+    color: whitesmoke;
+    transition: all 0.3s ease-in-out;
+}
+
+form>button:disabled {
+    width: 80%;
+    height: 40px;
+    border-radius: 15px;
+    background-color: #2C3E50;
+    opacity: 0.2;
+    color: whitesmoke;
+}
+
+form>button:hover {
+    background-color: black;
+}
+
+form>button:hover:disabled {
+    width: 80%;
+    height: 40px;
+    border-radius: 15px;
+    background-color: #2C3E50;
+    opacity: 0.2;
+    color: whitesmoke;
+}
+
+form>div>button:disabled {
+    width: 80%;
+    height: 40px;
+    border-radius: 15px;
+    background-color: #2C3E50;
+    opacity: 0.2;
+    color: whitesmoke;
+}
+
+form>div>button:hover {
+    background-color: black;
+}
+
+form>div>button:hover:disabled {
+    width: 80%;
+    height: 40px;
+    border-radius: 15px;
+    background-color: #2C3E50;
+    opacity: 0.2;
+    color: whitesmoke;
+}
+
+.marcas>i {
+    font-size: 30px;
+    margin-right: 10px;
+    cursor: pointer;
 }

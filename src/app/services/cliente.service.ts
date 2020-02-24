@@ -13,7 +13,7 @@ export class ClienteService {
 
   constructor(private http: HttpClient) { }
 
-  guardarCliente(cliente: ClienteUsuario){
+  guardarCliente(cliente: any){
     return this.http.post(`${this.API_URI}/registrar`, cliente);
   }
 

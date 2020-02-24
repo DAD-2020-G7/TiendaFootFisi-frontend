@@ -20,7 +20,7 @@ export class CarritoComponent implements OnInit {
   ngOnInit() {
     this.productos = this._carritoService.getItems()
     this.calcularMontoTotal();
-    console.log(this.productos )
+    console.log(this.productos)
   }
 
   eliminarItem(item, value) {
@@ -91,6 +91,7 @@ export class CarritoComponent implements OnInit {
         tramaEnvio.items.push({
           codItem: producto.idProducto,
           descripcionItem: producto.sDescripcion,
+          tallaItem: producto.tallaSeleccionada.nIdTalla,
           cantidadItem: producto.cantidad,
           precioItem: producto.nPrecioUnitario
         })
@@ -108,29 +109,39 @@ export class CarritoComponent implements OnInit {
       cancelButtonText: 'Cancelr'
     }).then((result) => {
       if (result.value) {
-
-        this._carritoService.pagarOrden(tramaEnvio).subscribe(
-          (res: any) => {
-            if (res.sTipo == 1)
+        if (localStorage.getItem('usuario')) {
+          this._carritoService.pagarOrden(tramaEnvio).subscribe(
+            (res: any) => {
+              if (res.sTipo == 1)
+                Swal.fire(
+                  '¡Listo!',
+                  'El pedido ha sido confirmado',
+                  'success'
+                ).then(result => {
+                  this._carritoService.clearCart();
+                  this._carritoService.getItems();
+                  this.router.navigateByUrl("catalogo")
+                })
+            },
+            error => {
+              console.log(error)
               Swal.fire(
-                '¡Listo!',
-                'El pedido ha sido confirmado',
-                'success'
-              ).then(result => {
-                this._carritoService.clearCart();
-                this._carritoService.getItems();
-                this.router.navigateByUrl("catalogo")
-              })
-          },
-          error => {
-            console.log(error)
-            Swal.fire(
-              '¡Ups!',
-              'Algo salió mañ',
-              'error'
-            )
-          }
-        )
+                '¡Ups!',
+                'Algo salió mal',
+                'error'
+              )
+            }
+          )
+        } else {
+          localStorage.setItem('carrito', 'true')
+          Swal.fire(
+            '¡Iniciar sesión!',
+            'Debe acceder para continuar con la compra',
+            'warning'
+          ).then(result => {
+            this.router.navigateByUrl('login')
+          })
+        }
       }
     })
 

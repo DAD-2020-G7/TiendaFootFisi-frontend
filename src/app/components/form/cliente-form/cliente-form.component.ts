@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
 import { TipoDocumentoService } from '../../../services/tipo-documento.service';
-
-import { ClienteUsuario } from '../../../models/ClienteUsuario';
 import { ClienteService } from 'src/app/services/cliente.service';
+import { FormBuilder, Validators } from '@angular/forms';
+import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cliente-form',
@@ -14,21 +14,28 @@ export class ClienteFormComponent implements OnInit {
 
   tipoDocumentos: any = [];
 
-  cliente: ClienteUsuario = {
-    sIdTipoDocumento:'',
-    sNumeroDocumento:'',
-    sApellidoPaterno:'',
-    sAapellidoMaterno:'',
-    sNombres:'',
-    sDireccion:'',
-    sCelular:'',
-    sCorreoElectronico:'',
+  datosPersonales = this.fb.group({
+    sIdTipoDocumento: ['', [Validators.required]],
+    sNumeroDocumento: ['', [Validators.required]],
+    sApellidoPaterno: ['', [Validators.required]],
+    sAapellidoMaterno: ['', [Validators.required]],
+    sNombres: ['', [Validators.required]],
+    sDireccion: ['', [Validators.required]],
+    sCelular: ['', [Validators.required]]
+  })
 
-    sIdUsuario:'',
-    sContrasenia:'',
-  };
+  datosAcceso = this.fb.group({
+    sCorreoElectronico: ['', [Validators.required]],
+    sIdUsuario: ['', [Validators.required]],
+    sContrasenia: ['', [Validators.required]]
+  })
 
-  constructor(private tipoDocumentoService: TipoDocumentoService, private clienteService: ClienteService) { }
+  constructor(
+    private fb: FormBuilder,
+    private tipoDocumentoService: TipoDocumentoService,
+    private clienteService: ClienteService
+  ) { }
+
 
   ngOnInit() {
     this.tipoDocumentoService.getTipoDocumentos().subscribe(
@@ -39,10 +46,24 @@ export class ClienteFormComponent implements OnInit {
     );
   }
 
-  registrarCliente(){
-    this.clienteService.guardarCliente(this.cliente).subscribe(
-      res => {
-        console.log(res);
+  jsonConcat(o1, o2) {
+    for (var key in o2) {
+      o1[key] = o2[key];
+    }
+    return o1;
+  }
+
+  registrarCliente() {
+    let cliente = this.jsonConcat(this.datosAcceso.value, this.datosPersonales.value)
+    console.log(cliente)
+    this.clienteService.guardarCliente(cliente).subscribe(
+      (res: any) => {
+        console.log(res)
+        Swal.fire(
+          '¡Listo!',
+          `Usted ha sido registrado correctamente!`,
+          'success'
+        )
       },
       err => console.log(err)
     );

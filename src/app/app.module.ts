@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -56,7 +56,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     FormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    NgMultiSelectDropDownModule
+    NgMultiSelectDropDownModule,
+    FormsModule, 
+    ReactiveFormsModule
   ],
   providers: [
     ProductoService,

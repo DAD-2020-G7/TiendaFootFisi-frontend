@@ -6,3 +6,11 @@ button {
     color: white;
     border-color: wheat;
 }
+
+.active {
+    color: rgb(5, 167, 46) !important;
+}
+
+.active:focus {
+    color: none !important
+}
