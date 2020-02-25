@@ -18,7 +18,7 @@ export class ClienteFormComponent implements OnInit {
     sIdTipoDocumento: ['', [Validators.required]],
     sNumeroDocumento: ['', [Validators.required]],
     sApellidoPaterno: ['', [Validators.required]],
-    sAapellidoMaterno: ['', [Validators.required]],
+    sApellidoMaterno: ['', [Validators.required]],
     sNombres: ['', [Validators.required]],
     sDireccion: ['', [Validators.required]],
     sCelular: ['', [Validators.required]]
