@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class ClienteFormComponent implements OnInit {
 
   tipoDocumentos: any = [];
+  loading: boolean = false;
 
   datosPersonales = this.fb.group({
     sIdTipoDocumento: ['', [Validators.required]],
@@ -54,10 +55,12 @@ export class ClienteFormComponent implements OnInit {
   }
 
   registrarCliente() {
+    this.loading = true;
     let cliente = this.jsonConcat(this.datosAcceso.value, this.datosPersonales.value)
     console.log(cliente)
     this.clienteService.guardarCliente(cliente).subscribe(
       (res: any) => {
+        this.loading = false;
         console.log(res)
         Swal.fire(
           '¡Listo!',

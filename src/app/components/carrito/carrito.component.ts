@@ -100,7 +100,7 @@ export class CarritoComponent implements OnInit {
 
     Swal.fire({
       title: '¿Estás seguro?',
-      text: "Se eliminará el producto de la lista",
+      text: "Se procederá con la compra de los productos seleccionados",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
