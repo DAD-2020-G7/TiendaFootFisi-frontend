@@ -10,8 +10,8 @@ import { IfStmt } from '@angular/compiler';
 export class UserService {
 
   public usuario: any;
-  //API_URI = "https://tienda-foot-fisi-backend.herokuapp.com/api/login";
-  API_URI = "http://localhost:8083/api/login";
+  API_URI = "https://tienda-foot-fisi-backend.herokuapp.com/api/login";
+  //API_URI = "http://localhost:8083/api/login";
 
   constructor(private http: HttpClient) { }
 

@@ -8,8 +8,8 @@ import { ClienteUsuario } from '../models/ClienteUsuario';
 })
 export class ClienteService {
   
-  //API_URI = "https://tienda-foot-fisi-backend.herokuapp.com/api/cliente";
-  API_URI = "http://localhost:8083/api/cliente";
+  API_URI = "https://tienda-foot-fisi-backend.herokuapp.com/api/cliente";
+  //API_URI = "http://localhost:8083/api/cliente";
 
   constructor(private http: HttpClient) { }
 

@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TipoDocumentoService {
 
-  //API_URI = "https://tienda-foot-fisi-backend.herokuapp.com/api/tipodocumento";
-  API_URI = "http://localhost:8083/api/tipodocumento";
+  API_URI = "https://tienda-foot-fisi-backend.herokuapp.com/api/tipodocumento";
+  //API_URI = "http://localhost:8083/api/tipodocumento";
 
   constructor(private http: HttpClient) { }
 
