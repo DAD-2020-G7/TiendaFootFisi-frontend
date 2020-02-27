@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TallaService {
 
-  API_URI = "https://tienda-foot-fisi-backend.herokuapp.com/api/talla";
-  //API_URI = "http://localhost:8083/api/talla";
+  //API_URI = "https://tienda-foot-fisi-backend.herokuapp.com/api/talla";
+  API_URI = "http://localhost:8083/api/talla";
 
   constructor(private http: HttpClient) { }
 

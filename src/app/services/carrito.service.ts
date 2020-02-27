@@ -90,8 +90,10 @@ export class CarritoService implements OnInit {
     }
 
     pagarOrden(json) {
+        console.log(json);
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this.http.post('https://tienda-foot-fisi-backend.herokuapp.com/api/pedido/registrar', json, { headers })
+        return this.http.post('http://localhost:8083/api/pedido/registrar', json, { headers })
+        //return this.http.post('https://tienda-foot-fisi-backend.herokuapp.com/api/pedido/registrar', json, { headers })
     }
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CarritoService } from 'src/app/services/carrito.service';
+import { CarritoService } from '../../services/carrito.service';
+import { UserService } from '../../services/user.service';
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
 
@@ -11,9 +12,11 @@ import { Router } from '@angular/router';
 export class CarritoComponent implements OnInit {
 
   productos: any;
+  usuario: any;
   montoTotal: number = 0;
   constructor(
     public _carritoService: CarritoService,
+    public _userService: UserService,
     private router: Router
   ) { }
 
@@ -71,6 +74,7 @@ export class CarritoComponent implements OnInit {
 
   pagar() {
     let date = new Date();
+
     let tramaEnvio = {
       tipoComp: 1,
       codEstablecimiento: "967",
@@ -110,6 +114,11 @@ export class CarritoComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         if (localStorage.getItem('usuario')) {
+          this._userService.cargarStorage();
+          this.usuario = this._userService.usuario;
+
+          tramaEnvio.tipoDoc = this.usuario.sIdTipoDocumento;
+          tramaEnvio.numeroDoc = this.usuario.sNumeroDocumento;
           this._carritoService.pagarOrden(tramaEnvio).subscribe(
             (res: any) => {
               if (res.sTipo == 1)

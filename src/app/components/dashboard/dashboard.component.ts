@@ -15,21 +15,20 @@ export class DashboardComponent implements OnInit {
   }
 
   initViz() {
-    var divElement = document.getElementById('viz1582439630437'); 
+
+    var divElement = document.getElementById('viz1582771186919'); 
     var vizElement = divElement.getElementsByTagName('object')[0]; 
     if (divElement.offsetWidth > 800) { 
-        vizElement.style.width = '1024px'; 
-        vizElement.style.height = '1627px'; 
+      vizElement.style.width = '1024px'; 
+      vizElement.style.height = '1627px'; 
     } else if (divElement.offsetWidth > 500) { 
-        vizElement.style.width = '1024px'; 
-        vizElement.style.height = '1627px'; 
+      vizElement.style.width = '1024px'; 
+      vizElement.style.height = '1627px'; 
     } else { 
-        vizElement.style.width = '100%'; 
-        vizElement.style.height = '1677px'; 
+      vizElement.style.width = '100%'; 
+      vizElement.style.height = '1677px'; 
     } 
-    var scriptElement = document.createElement('script'); 
-    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; 
-    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+    var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);
   }
 
 }
