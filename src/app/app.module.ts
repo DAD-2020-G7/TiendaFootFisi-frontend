@@ -34,6 +34,8 @@ import { CarritoComponent } from './components/carrito/carrito.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/assets/material.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TrabajadorFormComponent } from './components/form/trabajador-form/trabajador-form.component';
+import { TrabajadorListComponent } from './components/list/trabajador-list/trabajador-list.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     ClienteFormComponent,
     LoginFormComponent,
     CarritoComponent,
-    DashboardComponent
+    DashboardComponent,
+    TrabajadorFormComponent,
+    TrabajadorListComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ProductoListComponent } from './components/list/producto-list/producto-list.component';
 import { ProductoFormComponent } from './components/form/producto-form/producto-form.component';
+import { TrabajadorListComponent } from './components/list/trabajador-list/trabajador-list.component';
+import { TrabajadorFormComponent } from './components/form/trabajador-form/trabajador-form.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { LoginFormComponent } from './components/form/login-form/login-form.component';
 import { ClienteFormComponent } from './components/form/cliente-form/cliente-form.component';
@@ -27,6 +29,14 @@ const routes: Routes = [
   {
     path: 'productos/agregar',
     component: ProductoFormComponent
+  },
+  {
+    path: 'trabajadores',
+    component: TrabajadorListComponent
+  },
+  {
+    path: 'trabajador/agregar',
+    component: TrabajadorFormComponent
   },
   {
     path: 'login',

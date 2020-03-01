@@ -1,0 +1,53 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4">
+            <mat-form-field>
+                <mat-label>Filtro</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="filtro">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table mat-table [dataSource]="trabajadores" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="sIdTipoDocumento">
+                    <th mat-header-cell *matHeaderCellDef class="bg-primary text-white text-center"> Tipo de Documento </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"> 
+                        {{element.sIdTipoDocumento == '01' ? 'L.E / DNI' : 
+                          element.sIdTipoDocumento == '06' ? 'RUC' :
+                          element.sIdTipoDocumento == '07' ? 'Pasaporte' : 'CARNET EXT.'}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="sNumeroDocumento">
+                    <th mat-header-cell *matHeaderCellDef class="bg-primary text-white text-center"> Número de documento </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"> {{element.sNumeroDocumento}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="sApellidoPaterno">
+                    <th mat-header-cell *matHeaderCellDef class="bg-primary text-white text-center"> Apellido paterno </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"> {{element.sApellidoPaterno}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="sApellidoMaterno">
+                    <th mat-header-cell *matHeaderCellDef class="bg-primary text-white text-center"> Apellido materno </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"> {{element.sApellidoMaterno}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="sNombres">
+                    <th mat-header-cell *matHeaderCellDef class="bg-primary text-white text-center"> Nombres </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"> {{element.sNombres}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="sTipoTrabajador">
+                    <th mat-header-cell *matHeaderCellDef class="bg-primary text-white text-center"> Tipo de trabajador </th>
+                    <td mat-cell *matCellDef="let element" class="text-center"> {{element.sTipoTrabajador}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    </div>
+</div>

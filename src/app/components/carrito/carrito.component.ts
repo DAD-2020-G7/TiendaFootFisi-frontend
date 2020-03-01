@@ -110,7 +110,7 @@ export class CarritoComponent implements OnInit {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Aceptar',
-      cancelButtonText: 'Cancelr'
+      cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.value) {
         if (localStorage.getItem('usuario')) {

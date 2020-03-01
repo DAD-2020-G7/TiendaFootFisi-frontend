@@ -1,45 +1,51 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container">
-    <a class="navbar-brand" routerLink="/">
-      <img src="/assets/logo.png" width="50" height="50" class="align-center" alt="Logo">
-      Tienda Foot Fisi
-    </a>
+    
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
+    <a class="navbar-brand" routerLink="/">
+      <img src="/assets/logo.png" width="50" height="50" class="align-center" alt="Logo">
+      Tienda Foot Fisi
+    </a>
+    
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/catalogo" routerLinkActive="active">Productos</a>
+      <ul class="navbar-nav ml-auto" [(ngModel)]="_userService.loginTipo" [ngSwitch]="_userService.loginTipo">   
+        <li class="nav-item" *ngSwitchCase="0">
+          <a class="nav-link" routerLink="/catalogo" routerLinkActive="active">Catálogo</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngSwitchCase="1">
           <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Tableau</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngSwitchCase="2">
+          <a class="nav-link" routerLink="/trabajadores" routerLinkActive="active">Trabajadores</a>
+        </li>
+        <li class="nav-item" *ngSwitchCase="2">
+          <a class="nav-link" routerLink="/trabajador/agregar" routerLinkActive="active">Agregar trabajador</a>
+        </li>
+        <li class="nav-item" *ngSwitchCase="3">
           <a class="nav-link" routerLink="/productos/agregar" routerLinkActive="active">Agregar producto</a>
         </li>
-
-        <!-- <li class="nav-item">
-          <a class="nav-link" routerLink="/productos" routerLinkActive="active">Productos</a> 
-        </li> -->
       </ul>
     </div>
-  </div>
-  <div style="right: 0 !important;">
-    <button routerLink="/carrito" mat-raised-button class="centradoVertical mr-3" style="color: black"
-      [matBadge]="_carritoService.longitud" matBadgePosition="after">
-      <i class="material-icons">shopping_cart</i>
-    </button>
-    <button *ngIf="_userService.usuario != null" mat-raised-button color="warn" class="centradoVertical"
-      matBadgePosition="after" (click)="cerrarSesion()">
-      <i class="material-icons">exit_to_app</i>
-      Cerrar Sesión
-    </button>
-    <button *ngIf="_userService.usuario == null" mat-raised-button class="centradoVertical"
-      style="background-color: green; color: white" matBadgePosition="after" [routerLink]="['/login']">
-      <i class="material-icons">person</i>
-      Ingresar
-    </button>
+
+    <div style="right: 0 !important;" [ngSwitch]="_userService.loginTipo">
+      <button routerLink="/carrito" mat-raised-button class="centradoVertical mr-3" style="color: black"
+        [matBadge]="_carritoService.longitud" matBadgePosition="after" *ngSwitchCase="0">
+        <i class="material-icons">shopping_cart</i>
+      </button>
+      <button *ngIf="_userService.usuario != null" mat-raised-button color="warn" class="centradoVertical"
+        matBadgePosition="after" (click)="cerrarSesion()">
+        <i class="material-icons">exit_to_app</i>
+        Cerrar Sesión
+      </button>
+      <button *ngIf="_userService.usuario == null" mat-raised-button class="centradoVertical"
+        style="background-color: green; color: white" matBadgePosition="after" [routerLink]="['/login']">
+        <i class="material-icons">person</i>
+        Ingresar
+      </button>
+    </div>
   </div>
 </nav>

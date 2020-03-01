@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { TipoDocumentoService } from '../../../services/tipo-documento.service';
-import { ClienteService } from '../../../services/cliente.service';
+import { TrabajadorService } from '../../../services/trabajador.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-cliente-form',
-  templateUrl: './cliente-form.component.html',
-  styleUrls: ['./cliente-form.component.css']
+  selector: 'app-trabajador-form',
+  templateUrl: './trabajador-form.component.html',
+  styleUrls: ['./trabajador-form.component.css']
 })
-export class ClienteFormComponent implements OnInit {
-
+export class TrabajadorFormComponent implements OnInit {
+  
   tipoDocumentos: any = [];
   loading: boolean = false;
 
@@ -21,12 +20,10 @@ export class ClienteFormComponent implements OnInit {
     sApellidoPaterno: ['', [Validators.required]],
     sApellidoMaterno: ['', [Validators.required]],
     sNombres: ['', [Validators.required]],
-    sDireccion: ['', [Validators.required]],
-    sCelular: ['', [Validators.required]]
+    sTipoTrabajador: ['', [Validators.required]]
   })
 
   datosAcceso = this.fb.group({
-    sCorreoElectronico: ['', [Validators.required]],
     sIdUsuario: ['', [Validators.required]],
     sContrasenia: ['', [Validators.required]]
   })
@@ -34,9 +31,8 @@ export class ClienteFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private tipoDocumentoService: TipoDocumentoService,
-    private clienteService: ClienteService
+    private trabajadorService: TrabajadorService
   ) { }
-
 
   ngOnInit() {
     this.tipoDocumentoService.getTipoDocumentos().subscribe(
@@ -54,17 +50,17 @@ export class ClienteFormComponent implements OnInit {
     return o1;
   }
 
-  registrarCliente() {
+  registrarTrabajador() {
     this.loading = true;
-    let cliente = this.jsonConcat(this.datosAcceso.value, this.datosPersonales.value)
-    console.log(cliente)
-    this.clienteService.guardarCliente(cliente).subscribe(
+    let trabajador = this.jsonConcat(this.datosAcceso.value, this.datosPersonales.value)
+    console.log(trabajador)
+    this.trabajadorService.guardarTrabajador(trabajador).subscribe(
       (res: any) => {
         this.loading = false;
         console.log(res)
         Swal.fire(
           '¡Listo!',
-          `Usted ha sido registrado correctamente!`,
+          `Trabajador registrado correctamente!`,
           'success'
         )
       },

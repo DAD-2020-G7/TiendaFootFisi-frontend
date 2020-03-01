@@ -1,0 +1,79 @@
+<div style="background-color: rgba(44, 62, 80, 0.2); width: 100%; height: 100%;  " class="centradoVertical">
+    <div style="max-height: 750px; width: 500px; background-color: white; border-radius: 5px;">
+        <div style="font-size: 26px; font-weight: 600; text-align: center; padding-top: 40px;">
+            REGISTRO
+        </div>
+
+        <div style="padding: 0px 10px 0px 10px;">
+            <mat-vertical-stepper [linear]="true" #stepper>
+                <mat-step [stepControl]="datosPersonales">
+                    <form [formGroup]="datosPersonales">
+                        <ng-template matStepLabel>DATOS PERSONALES</ng-template>
+                        <div style="display: flex;">
+                            <mat-form-field appearance="fill" style="width: 35%;" class="mr-2">
+                                <mat-label>Doc.</mat-label>
+                                <mat-select formControlName="sIdTipoDocumento">
+                                    <mat-option *ngFor="let tipoDocumento of tipoDocumentos"
+                                        [value]="tipoDocumento.sIdTipoDocumento">
+                                        {{tipoDocumento.sDescripcionCorta}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field style="width: 65%;" appearance="fill">
+                                <mat-label>Número de documento</mat-label>
+                                <input matInput formControlName="sNumeroDocumento">
+                            </mat-form-field>
+                        </div>
+                        <div style="display: flex;">
+                            <mat-form-field appearance="fill" class="mr-2" style="width: 49%">
+                                <mat-label>Ap. Paterno</mat-label>
+                                <input matInput formControlName="sApellidoPaterno">
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" style="width: 49%">
+                                <mat-label>Ap. Materno</mat-label>
+                                <input matInput formControlName="sApellidoMaterno">
+                            </mat-form-field>
+                        </div>
+                        <mat-form-field appearance="fill" style="width: 100%;">
+                            <mat-label>Nombre completo</mat-label>
+                            <input matInput formControlName="sNombres">
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" style="width: 100%;">
+                            <mat-label>Tipo de trabajador</mat-label>
+                            <mat-select formControlName="sTipoTrabajador">
+                                <mat-option value="Encargado de almacen">Encargado de almacen</mat-option>
+                                <mat-option value="Recursos humanos">Recursos humanos</mat-option>
+                                <mat-option value="Gerente">Gerente</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <button mat-button matStepperNext style="width: 100%;" class="centradoVertical"
+                            [disabled]="!datosPersonales.valid">
+                            <i class="material-icons">keyboard_arrow_down</i>
+                            Siguiente
+                        </button>
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="datosAcceso">
+                    <form [formGroup]="datosAcceso">
+                        <ng-template matStepLabel>CREDENCIALES DE USUARIO</ng-template>
+                        <div class="mt-1">
+                            <mat-form-field appearance="fill" style="width: 100%;">
+                                <mat-label>Usuario</mat-label>
+                                <input matInput formControlName="sIdUsuario">
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" style="width: 100%;">
+                                <mat-label>Contraseña</mat-label>
+                                <input matInput formControlName="sContrasenia">
+                            </mat-form-field>
+                            <button mat-button style="width: 100%;" class="centradoVertical mt-1"
+                                (click)="registrarTrabajador()" [disabled]="datosAcceso.invalid">
+                                <i class="material-icons">how_to_reg</i>
+                                Finalizar Registro
+                            </button>
+                        </div>
+                    </form>
+                </mat-step>
+            </mat-vertical-stepper>
+        </div>
+    </div>
+</div>

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./navegacion.component.css']
 })
 export class NavegacionComponent implements OnInit {
-
+  
   constructor(
     public _carritoService: CarritoService,
     public _userService: UserService,
@@ -17,6 +17,23 @@ export class NavegacionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this._userService.cargarStorage();
+    if(localStorage.getItem('usuario')){
+      if(this._userService.usuario.hasOwnProperty('sTipoTrabajador')){
+        if(this._userService.usuario.sTipoTrabajador == 'Gerente'){
+          this._userService.loginTipo = 1;
+        }
+        if(this._userService.usuario.sTipoTrabajador == 'Recursos humanos'){
+          this._userService.loginTipo = 2;    
+        }
+        if(this._userService.usuario.sTipoTrabajador == 'Encargado de almacen'){
+          this._userService.loginTipo = 3;
+        }
+      }
+    }
+    else{
+      this._userService.loginTipo = 0;
+    }
   }
 
   cerrarSesion() {

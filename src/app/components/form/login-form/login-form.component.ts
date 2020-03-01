@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login-form',
@@ -40,7 +41,8 @@ export class LoginFormComponent implements AfterViewInit {
   constructor(
     private fb: FormBuilder,
     private _userService: UserService,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) { }
 
   login() {
@@ -62,11 +64,28 @@ export class LoginFormComponent implements AfterViewInit {
             'error'
           )
         }
-        if (res.sCelular) {
-          this.router.navigateByUrl('catalogo')
+
+        if(!this._userService.usuario.hasOwnProperty('sTipoTrabajador')){
+          this.router.navigateByUrl('catalogo');
           if (localStorage.getItem('carrito')) {
             this.router.navigateByUrl('carrito');
             localStorage.removeItem('carrito')
+          }
+          
+          this.Toast.fire({
+            icon: 'success',
+            title: 'Signed in successfully'
+          })
+        }
+        else{
+          if(this._userService.usuario.sTipoTrabajador == 'Gerente'){
+            this.router.navigateByUrl('dashboard');
+          }
+          if(this._userService.usuario.sTipoTrabajador == 'Recursos humanos'){
+            this.router.navigateByUrl('trabajadores');  
+          }
+          if(this._userService.usuario.sTipoTrabajador == 'Encargado de almacen'){
+            this.router.navigateByUrl('productos/agregar');
           }
           this.Toast.fire({
             icon: 'success',
